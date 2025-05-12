@@ -92,13 +92,6 @@ alias la='ls -A'
 alias l='ls -CF'
 
 # MJGarsteck ALiases
-alias sshbw='ssh mjgarsteck@10.1.2.10'
-#alias sshprl='ssh mjgarsteck@10.1.2.10 && cd ~/../../web/HBWv2'
-alias sshprl='ssh mjgarsteck@10.1.2.10 "cd ~/../../web/HBWv2 && bash --login"'
-
-alias sshweb='ssh mjgarsteck@10.1.2.10 && cd ~/../../web/hw'
-alias sshccp='ssh mjgarsteck@10.1.2.10 && clear && tail -f /opt/coldfusion11/cfusion/logs/ccprocessing.log'
-alias cfmlog='ssh mjgarsteck@10.1.2.10 && clear && tail -f /opt/coldfusion11/cfusion/logs/ccprocessing.log'
 alias cd..='cd ..'
 alias clls='clear && ls'
 
