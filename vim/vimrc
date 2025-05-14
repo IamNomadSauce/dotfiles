@@ -2,6 +2,7 @@ set mouse=a
 set autoindent
 set relativenumber
 set number
+set nowrap
 
 call plug#begin('~/.vim/plugged')
 Plug 'fatih/vim-go'
