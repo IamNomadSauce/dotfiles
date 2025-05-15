@@ -6,7 +6,8 @@ tmux display-message "tmux-newsidebar plugin loaded"
 PLUGIN_DIR="$HOME/.config/tmux/plugins/tmux-dir-sidebar"
 
 # Key binding to toggle the sidebar (prefix + s)
-tmux bind-key a run-shell "tmux split-window -h -l 30 'bash ~/.config/dotfiles/tmux/plugins/tmux-newsidebar/scripts/sidebar.sh'"
+#tmux bind-key a run-shell "tmux split-window -h -l 30 'bash ~/.config/dotfiles/tmux/plugins/tmux-newsidebar/scripts/sidebar.sh'"
+tmux bind-key a run-shell "tmux split-window -h -b -l 30 'bash ~/.config/dotfiles/tmux/plugins/tmux-newsidebar/scripts/sidebar.sh'"
 
 # Key binding to open the selected file (prefix + o)
 tmux bind-key o run-shell "bash $PLUGIN_DIR/open_file.sh"
