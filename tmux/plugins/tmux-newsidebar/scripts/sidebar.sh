@@ -1,15 +1,30 @@
 #!/bin/bash
 
-tmux display-message "TESTING IT WORKING"
-# Check if a directory argument was provided
-if [ $# -eq 0 ]; then
-  echo "Error: No directory provided."
-  exit 1
-fi
+# tmux-dir-sidebar: Simple directory listing sidebar
 
-current_dir=$1
+tmux display-message "tmux-newsidebar plugin loaded"
+# Get the initial directory (will update dynamically)
+current_dir=$(tmux display-message -p -F "#{pane_current_path}")
 
-# Display the directory and wait for user input
-echo "Current working directory: $current_dir"
-echo "Press Enter to close this pane."
-read
+while true; do
+  # Update directory from active pane
+  active_pane=$(tmux list-panes -F "#{pane_id} #{pane_active}" | grep " 1$" | cut -d' ' -f1)
+  if [ -n "$active_pane" ]; then
+    new_dir=$(tmux display-message -p -t "$active_pane" -F "#{pane_current_path}")
+    if [ "$new_dir" != "$current_dir" ]; then
+      current_dir="$new_dir"
+    fi
+  fi
+
+  # Display directory contents
+  clear
+  echo "Directory: $current_dir"
+  ls -1 "$current_dir"
+
+  # Wait for changes or timeout to check directory
+  if command -v inotifywait >/dev/null 2>&1; then
+    inotifywait -e modify,create,delete "$current_dir" --timeout 1 2>/dev/null
+  else
+    sleep 1
+  fi
+done
