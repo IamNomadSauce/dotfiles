@@ -127,3 +127,4 @@ alias ls='ls -ltr'
 export GOROOT=/usr/local/go
 export PATH=$PATH:$GOROOT/bin
 export PATH=$PATH:$HOME/go/bin
+export PATH="/usr/local/bin:$PATH"

@@ -1,8 +1,15 @@
+syntax on
+set tabstop=2
+set shiftwidth=2
+set expandtab
+set ai
 set mouse=a
 set autoindent
 set relativenumber
 set number
 set nowrap
+set hlsearch
+set ruler
 
 call plug#begin('~/.vim/plugged')
 Plug 'fatih/vim-go'
